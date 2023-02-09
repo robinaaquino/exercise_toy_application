@@ -1,0 +1,9 @@
+<%= form_with(model: user) do |form|%>
+    <%= form.label :name, style: "display: block"  %>
+    <%= form.text_field :name, style: "display: block"  %>
+
+    <%= form.label :email, style: "display: block"  %>
+    <%= form.text_field :email, style: "display: block"  %>
+
+    <%= form.submit %>
+<% end %>

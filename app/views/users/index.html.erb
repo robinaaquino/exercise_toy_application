@@ -18,10 +18,12 @@
                 <td><%= user.email%></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td><%= link_to "Delete user", user, method: :delete %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
 <br>
+
+<%= link_to "New user", new_user_path %>
