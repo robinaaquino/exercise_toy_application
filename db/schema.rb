@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_02_09_160005) do
   create_table "records", force: :cascade do |t|
     t.text "content"
-    t.integer "record_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
