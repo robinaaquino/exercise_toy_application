@@ -3,5 +3,6 @@ class TableUsers < ActiveRecord::Migration[7.0]
     create_table :users do |user|
       user.string :name
       user.string :email
+    end
   end
 end
