@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: %i[ show destroy ]
+    before_action :set_user, only: %i[ show edit update destroy ]
 
     def index
         @users = User.all
@@ -17,7 +17,18 @@ class UsersController < ApplicationController
 
         respond_to do |format|
             if @user.save
-                format.html { redirect_to users_url}
+                format.html { redirect_to users_url, notice: "Successfully created a user"}
+            end
+        end
+    end
+
+    def edit
+    end
+
+    def update
+        respond_to do |format|
+            if @user.update(user_parameters)
+                format.html { redirect_to user_url(@user), notice: "Successfully updated a user"}
             end
         end
     end
@@ -26,7 +37,7 @@ class UsersController < ApplicationController
         @user.destroy
 
         respond_to do |format|
-            format.html { redirect_to users_url}
+            format.html { redirect_to users_url, notice: "Successfully deleted a user"}
         end
     end
 

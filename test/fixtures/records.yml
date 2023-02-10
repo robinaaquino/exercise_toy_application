@@ -1,0 +1,7 @@
+one:
+  content: Lorem
+  user_id: one
+
+two:
+  content: Ipsum
+  user_id: two

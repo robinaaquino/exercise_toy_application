@@ -1,3 +1,5 @@
+<p><%= notice %></p>
+
 <p>
     ID:
     <%= @record.id %>
@@ -12,4 +14,5 @@
 </p>
 
 <%= link_to "Back to records", records_path %>
+<%= link_to "Edit this record", edit_record_path(@record) %>
 <%= button_to "Destroy this record", @record, method: :delete %>

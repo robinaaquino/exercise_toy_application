@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-    before_action :set_record, only: %i[ show destroy ]
+    before_action :set_record, only: %i[ show edit update destroy ]
 
     def index
         @records = Record.all
@@ -17,7 +17,18 @@ class RecordsController < ApplicationController
 
         respond_to do |format|
             if @record.save
-                format.html { redirect_to records_url}
+                format.html { redirect_to records_url, notice: "Successfully created a record"}
+            end
+        end
+    end
+
+    def edit
+    end
+
+    def update
+        respond_to do |format|
+            if @record.update(record_parameters)
+                format.html { redirect_to record_url(@record), notice: "Successfully updated a record"}
             end
         end
     end
@@ -26,7 +37,7 @@ class RecordsController < ApplicationController
         @record.destroy
 
         respond_to do |format|
-            format.html { redirect_to records_url}
+            format.html { redirect_to records_url, notice: "Successfully deleted a record"}
         end
     end
 
