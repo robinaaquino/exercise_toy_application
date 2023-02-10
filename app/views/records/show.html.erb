@@ -1,0 +1,15 @@
+<p>
+    ID:
+    <%= @record.id %>
+</p>
+<p>
+    Content:
+    <%= @record.content %>
+</p>
+<p>
+    User ID:
+    <%= @record.user_id %>
+</p>
+
+<%= link_to "Back to records", records_path %>
+<%= button_to "Destroy this record", @record, method: :delete %>
