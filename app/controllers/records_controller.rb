@@ -9,10 +9,6 @@ class RecordsController < ApplicationController
 
     def create
         @record = Record.new(record_parameters)
-
-        if @record.save
-            format.html { redirect_to records, notice: "Success"}
-        end
     end
 
     def destroy

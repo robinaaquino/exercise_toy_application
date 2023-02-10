@@ -9,10 +9,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_parameters)
-
-        if @user.save
-            format.html { redirect_to users, notice: "Success"}
-        end
     end
 
     def destroy
