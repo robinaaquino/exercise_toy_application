@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        @users = User.new(user_parameters)
+        @user = User.new(user_parameters)
 
-        if @users.save
-            @users
+        if @user.save
+            format.html { redirect_to users, notice: "Success"}
         end
     end
 

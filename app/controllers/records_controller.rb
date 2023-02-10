@@ -8,10 +8,10 @@ class RecordsController < ApplicationController
     end
 
     def create
-        @records = Record.new(record_parameters)
+        @record = Record.new(record_parameters)
 
-        if @records.save
-            @records
+        if @record.save
+            format.html { redirect_to records, notice: "Success"}
         end
     end
 
