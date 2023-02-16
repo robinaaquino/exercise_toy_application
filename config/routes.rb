@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
+  get '/home', to: 'static_pages#home'
   resources :records
   resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  root "application#hello"
+  root "static_pages#home"
 end
