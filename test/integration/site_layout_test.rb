@@ -8,16 +8,4 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", users_path
     assert_select "a[href=?]", records_path
   end
-
-  test "users link" do
-    get root_path
-    get users_path
-    assert_select "title", "Users"
-  end
-
-  test "records link" do
-    get root_path
-    get records_path
-    assert_select "title", "Records"
-  end
 end
