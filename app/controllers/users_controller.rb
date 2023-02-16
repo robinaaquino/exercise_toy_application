@@ -15,10 +15,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_parameters)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to users_url, notice: "Successfully created a user"}
-      end
+    if @user.save
+      flash.now[:success] = "Successfully created a user"
+      redirect_to @user
+    else
+      render 'new'
     end
   end
 
@@ -26,18 +27,22 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_parameters)
-        format.html { redirect_to user_url(@user), notice: "Successfully updated a user"}
-      end
+
+    if @user.update(user_parameters)
+      flash.now[:success] = "Successfully updated a user"
+      redirect_to @user
+    else
+      render 'edit'
     end
+
   end
 
   def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "Successfully deleted a user"}
+    if @user.destroy
+      flash.now[:success] = "Successfully deleted a user"
+      redirect_to users_url
+    else
+      render 'index'
     end
   end
 

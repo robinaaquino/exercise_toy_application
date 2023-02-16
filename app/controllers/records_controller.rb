@@ -14,11 +14,11 @@ class RecordsController < ApplicationController
 
     def create
         @record = Record.new(record_parameters)
-
-        respond_to do |format|
-            if @record.save
-                format.html { redirect_to records_url, notice: "Successfully created a record"}
-            end
+        if @record.save
+            flash.now[:success] = "Successfully created a record"
+            redirect_to @record
+        else
+            render 'new'
         end
     end
 
@@ -26,18 +26,20 @@ class RecordsController < ApplicationController
     end
 
     def update
-        respond_to do |format|
-            if @record.update(record_parameters)
-                format.html { redirect_to record_url(@record), notice: "Successfully updated a record"}
-            end
+        if @record.update(record_parameters)
+            flash.now[:success] = "Successfully updated a record"
+           redirect_to @record
+        else
+            render 'edit'
         end
     end
 
     def destroy
-        @record.destroy
-
-        respond_to do |format|
-            format.html { redirect_to records_url, notice: "Successfully deleted a record"}
+        if @record.destroy
+            flash.now[:success] = "Successfully deleted a record"
+            redirect_to records_url
+        else
+            render 'index'
         end
     end
 
