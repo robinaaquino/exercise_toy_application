@@ -16,3 +16,16 @@
 <%= link_to "Back to users", users_path %>
 <%= link_to "Edit this user", edit_user_path(@user) %>
 <%= button_to "Destroy this user", @user, method: :delete %>
+
+<br>
+
+<div class="col-md-8">
+    <% if @user.records.any? %>
+        <h3>Records (<%= @user.records.count %>)</h3>
+        <ol class="records">
+        <%= render @records %>
+        </ol>
+        <%= will_paginate @records %>
+    <% end %>
+    </div>
+</div>
