@@ -1,9 +1,20 @@
-<%= form_with(model: user) do |form|%>
-    <%= form.label :name, style: "display: block"  %>
-    <%= form.text_field :name, style: "display: block"  %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
-    <%= form.label :email, style: "display: block"  %>
-    <%= form.text_field :email, style: "display: block"  %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
 
-    <%= form.submit %>
-<% end %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
