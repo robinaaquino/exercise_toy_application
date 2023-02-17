@@ -13,9 +13,11 @@
     <%= @user.email %>
 </p>
 
-<%= link_to "Back to users", users_path %>
-<%= link_to "Edit this user", edit_user_path(@user) %>
-<%= button_to "Destroy this user", @user, method: :delete %>
+<div class="btn-group" role="group">
+    <%= button_to "Back to users", users_path, method: :get, :class => "btn btn-primary"%>
+    <%= button_to "Edit this user", edit_user_path(@user), method: :get, :class => "btn btn-primary"%>
+    <%= button_to "Destroy this user", @user, method: :delete , :class => "btn btn-primary"%>
+</div>
 
 <br>
 
