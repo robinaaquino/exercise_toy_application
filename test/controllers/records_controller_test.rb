@@ -7,7 +7,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def setup
-    @record = records(:orange)
+    @record = records(:one)
     end
 
 
