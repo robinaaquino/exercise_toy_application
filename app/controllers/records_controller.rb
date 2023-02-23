@@ -37,6 +37,8 @@ class RecordsController < ApplicationController
   end
 
   def destroy
+    @record.images.purge
+
     if @record.destroy
       flash.now[:success] = "Successfully deleted a record"
       redirect_to records_url
@@ -51,7 +53,7 @@ class RecordsController < ApplicationController
     end
 
     def record_parameters
-      params.require(:record).permit(:content)
+      params.require(:record).permit(:content, images: [])
     end
 
     def correct_user

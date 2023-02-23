@@ -5,7 +5,11 @@
       <%= f.label :content %>
       <%= f.text_field :content, class: 'form-control' %>
 
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true %>
+
       <%= f.submit class: 'btn btn-primary' %>
+
     <% end %>
   </div>
 </div>

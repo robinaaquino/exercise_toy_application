@@ -17,6 +17,7 @@ gem 'webpacker', '~>5.0'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'bootsnap', require: false
+gem 'cloudinary'
 
 group :development, :test do
 gem 'sqlite3'
