@@ -51,7 +51,7 @@ class RecordsController < ApplicationController
     end
 
     def record_parameters
-      params.require(:record).permit(:content)
+      params.require(:record).permit(:content, :image)
     end
 
     def correct_user
