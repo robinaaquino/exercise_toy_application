@@ -16,7 +16,7 @@
 <p>
     <% @record.images.attached? %>
         <% @record.images.each do |image| %>
-            <%= image_tag image %>
+            <%= cl_image_tag image.key, :width=>150, :crop=>"fill" %>
         <% end %>
 </p>
 

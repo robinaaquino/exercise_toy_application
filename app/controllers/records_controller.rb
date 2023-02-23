@@ -37,6 +37,8 @@ class RecordsController < ApplicationController
   end
 
   def destroy
+    @record.images.purge
+
     if @record.destroy
       flash.now[:success] = "Successfully deleted a record"
       redirect_to records_url

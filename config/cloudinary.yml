@@ -1,0 +1,23 @@
+development:
+  cloud_name: 'dsc75sbwu'
+  api_key: '562648868567863'
+  api_secret: '49SinShmRHbH5m6tOR8MJsl0pXk'
+  secure: true
+  enhance_image_tag: true
+  static_file_support: false
+
+production:
+  cloud_name: 'dsc75sbwu'
+  api_key: '562648868567863'
+  api_secret: '49SinShmRHbH5m6tOR8MJsl0pXk'
+  secure: true
+  enhance_image_tag: true
+  static_file_support: true
+
+test:
+  cloud_name: 'dsc75sbwu'
+  api_key: '562648868567863'
+  api_secret: '49SinShmRHbH5m6tOR8MJsl0pXk'
+  secure: true
+  enhance_image_tag: true
+  static_file_support: false
