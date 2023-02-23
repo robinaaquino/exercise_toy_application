@@ -13,12 +13,36 @@
     <%= @record.user_id %>
 </p>
 
-<p>
-    <% @record.images.attached? %>
-        <% @record.images.each do |image| %>
-            <%= cl_image_tag image.key, :width=>150, :crop=>"fill" %>
-        <% end %>
-</p>
+<% @record.images.attached? %>
+    <div id="imageCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <ol class="carousel-indicators">
+            <% @record.images.each_with_index do |image, index| %>
+                <li data-target="imageCarousel" data-slide-to="#{n}" class="#{'active' if n== 0}"></li>
+            <% end %>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="item active">
+                <%= cl_image_tag @record.images.first.key%>
+            </div>
+
+            <% @record.images.drop(1).each do |image| %>
+                <div class="item">
+                    <%= cl_image_tag image.key%>
+                </div>
+            <% end %>
+        </div>
+
+        <a class = "left carousel-control" href="#imageCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <a class = "right carousel-control" href="#imageCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 
 <%= button_to "Back to records", records_path, method: :get, :class => "btn btn-primary"%>
 <%= button_to "Edit this record", edit_record_path(@record), method: :get, :class => "btn btn-primary"%>

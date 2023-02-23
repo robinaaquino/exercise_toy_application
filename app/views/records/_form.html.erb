@@ -1,3 +1,38 @@
+<script>
+  function removeAllPreview(parent){
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild)
+    }
+  }
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      for (let i = 0; i < input.files.length; i++) {
+        var reader = new FileReader();
+        var img = document.createElement('img');
+        img.setAttribute("style", "width:100px;", "height:auto;");
+
+        reader.addEventListener("load", function() {
+          var image = new Image()
+          image.width = 100;
+          image.src = this.result;
+          document.getElementById('preview_image').appendChild(image);
+        }, false);
+
+        reader.readAsDataURL(input.files[i])
+      }
+    }
+}
+
+
+  $(function() {
+    $(".file_upload").change(function() {
+      removeAllPreview(document.getElementById('preview_image'));
+      readURL(this);
+    })
+  });
+</script>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: record) do |f| %>
@@ -6,10 +41,14 @@
       <%= f.text_field :content, class: 'form-control' %>
 
       <%= f.label :images %>
-      <%= f.file_field :images, multiple: true %>
+      <%= f.file_field :images, multiple: true, class: 'file_upload' %>
+
+      <div id="preview_image">
+      </div>
 
       <%= f.submit class: 'btn btn-primary' %>
 
     <% end %>
   </div>
 </div>
+
